@@ -1,0 +1,95 @@
+/*
+ please read in maximized state of texteditor
+ author : KSatyam,200050064
+ LAB 4 = 15puzzle.cpp  modified to N_puzzle.cpp (N*N square puzzle)
+
+ DESCRIPTION: program a 15puzzle game using fltk library
+
+ NOTE: you must take care of abstractions and paradigm
+*/
+
+
+submitted files: N_puzzle.cpp  
+                 Observation.txt
+                 imgpuzzle.zip
+
+N_puzzle.cpp
+   
+   FEATURES:
+     # generalized n*n puzzle (for easy use keep n<=20 
+           else need to modify the program little bit) 
+     # puzzle in unsolved randomised frame with surity of it being solvable 
+           as it has been randomised by taking random exchanges from solved puzzle
+     # colored tiles with numbers font big enough for a good view
+     # puzzle fit to window size no side background
+   
+    
+
+
+   WORKING:
+     # there was no any problem in following the commnads being prompted while doing lab 
+            in all library functions and programs being discussed
+            but i lagged a little bit because of my poor typing skill
+            though finally i was done with all by 4:30 peacefully so was ready to write the puzzle program
+     # in first edition of my game i was able to make a working randomized solvable 15puzzle
+            but it needed the whole button array defined in int main as argument 
+            to some member functions of each MyButton which i realised is not a good way 
+     # later in second edition i made a class puzzle which had the button array as member variable 
+            and all window fltk variables too as its member variable and the window.show()
+            kept in the constructor of puzzle class with the member functions,those of edition 1 in
+            MyButton which took the buttons array as argument.
+     # so now in main i just was going to call the puzzle class objects which will do my whole job
+     # the third and final edition was to make the puzzle generalized to n*n square by taking argument 
+            of the size of the square in the constructor of puzzle class
+     # so finally the program looks like this in short
+         
+         class MyButton 
+           int neighbourcount;  //number of neighbours of this particular button
+           MyButton *neighbours[4];  //array of neighbours button pointers
+           MyButton(int x, int y, int w, int h, const char *l);  //constructor of MyButton doing nothing
+           int handle(int e); // e is incoming mouse event of different kinds
+        class puzzle
+           Fl_Window *window;  //game window
+           int dim; //dimension or size of squre puzzle box
+           MyButton *buttons[20][20];  //for just keeping a bar on buttons matrix 
+           void allocateNeighbours();  //to allocate neighbour button pointers to the neighbours array for each button
+           void randomize();           //to randomize the entries of numbers
+           float windowsize;           //the pixel dimension of puzzle window initialised to 600 
+         public:
+           puzzle(int dim);            //constructor having all the display commands
+
+
+
+
+    POSSIBLE ENHANCEMENTS:
+     # to customize the selection method of buttons from click to click and drag edit as commented in lines 43 and 151
+     # for playing puzzle of dimension more than 20 increase the parameter 20 
+           in the program as commented in line 68
+     # for customising windowsize do as commented in line 79
+     # to customize the way of playing different levels edit int main() as commented there 
+     # a win pop up window after player get the tiles in order
+     # a count of no. of legal clicks can be displayed 
+           //legal click means click on neighbour of blank button
+     # a target of solving puzzle in limted number of legal clicks can be added 
+
+
+
+
+imgpuzzle.zip
+    
+   CONTENTS:
+     # puzzle.cpp    to compile use: g++ -std=c++11 puzzle.cpp -lfltk -lfltk_images -o puzzle
+                     to run: ./puzzle
+     # image.txt (containing names of image files)
+     # 16 images in .jpg format
+    
+
+   WORKING:
+     # i have changed the format of the program as i have used Fl_Box instead of Fl_Buttons 
+         for parent of MyButton
+     # used Fl_JPEG_Image Class as well to store the images
+     # reason behind this being , it was becoming almost too difficult to place an image 
+         as a label to a Button, so i decided to flip the program accordingly
+     # have used fstream and strings to get the names of associated image file names into the program
+     # and did rest things as same as N_puzzle and some commands associated with image labels to boxes
+     

@@ -1,0 +1,49 @@
+/*
+author: KSatyam , 200050064
+lab6 snake.cpp
+motive : to use fltk along with inheritance to develop a basic game
+*/
+
+submitted files: screenshot of mid 
+                 snake.cpp
+                 Observation.txt
+
+Snake.cpp
+
+Features:
+     # it is a very primitive classic nokia snake game 
+     # only functions available for now are movement of snake 
+        and eating of food to increase length
+     # no any death conditions have been added yet
+
+
+Working:
+     # started with the base code provided on moodle but was not able to 
+        decide what to do with it 
+     # so cleared almost everything thought of a game model and then proceeded
+     # it was difficult to monitor handle function for many objects present on the screen 
+          thus i removed handle from the objects and placed into the modified Fl_Window
+     # then coordinated all important movements in different objects from there 
+     # to play the game with the help of keyboard it was pretty involving task to
+        figure out the key codes and syntax for using the functions 
+     # after completing handle i made different type of objects for different purposes
+     # a snake class consisting of head and body units and food scattered in the window 
+        using rand and srand functions
+     # then i used handle command of window to move the head and made the rest of body units 
+       of snake to follow the unit ahead of it ,this enhances the movement at 90 degrees as well
+     # wrote search functions for searching of food by head and increase function to increase size
+        in case of ingestion
+     # the head and Mycircle are subclass of shape
+     # further the units and food are types of Mycircle with different colors
+     # used only refresh function and removed the wipe function
+
+
+Possible Enhancements:
+     # many enhancements can be made further like-
+        * boundaries
+        * death of snake by intersecting itself
+        * difficult levels
+        * more attractive look 
+        * scoreboard
+     
+
